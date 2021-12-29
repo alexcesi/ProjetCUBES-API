@@ -1,11 +1,16 @@
+import { getConnection } from 'typeorm';
+import { UserRepository } from '../repository/user.repository';
+
 export class UserService {
+    private userRepository: UserRepository;
 
     constructor(){
-
+        this.userRepository = getConnection('projetCUBES').getCustomRepository(UserRepository);
     }
 
-    public index = () => {
-        return "Index from Service"
+    public index = async () => {
+        const users = await this.userRepository.find()
+        return users;
     }
 
     public create = () => {
