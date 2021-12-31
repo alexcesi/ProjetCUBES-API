@@ -5,6 +5,21 @@ export class UserEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
-    name: string;
+    @Column({ nullable: true })
+    firstname: string;
+
+    @Column({ nullable: true })
+    lastname: string;
+
+    @Column({ nullable: true })
+    password: string;
+
+    @Column({ nullable: true })
+    alias: string;
+    
+    @Column({ nullable: true })
+    create_date: Date;
+
+    @Column({ nullable: true })
+    isActive: boolean;
 }

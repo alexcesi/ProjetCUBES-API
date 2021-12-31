@@ -19,9 +19,29 @@ var UserEntity = /** @class */ (function () {
         __metadata("design:type", Number)
     ], UserEntity.prototype, "id", void 0);
     __decorate([
-        (0, typeorm_1.Column)(),
+        (0, typeorm_1.Column)({ nullable: true }),
         __metadata("design:type", String)
-    ], UserEntity.prototype, "name", void 0);
+    ], UserEntity.prototype, "firstname", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ nullable: true }),
+        __metadata("design:type", String)
+    ], UserEntity.prototype, "lastname", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ nullable: true }),
+        __metadata("design:type", String)
+    ], UserEntity.prototype, "password", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ nullable: true }),
+        __metadata("design:type", String)
+    ], UserEntity.prototype, "alias", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ nullable: true }),
+        __metadata("design:type", Date)
+    ], UserEntity.prototype, "create_date", void 0);
+    __decorate([
+        (0, typeorm_1.Column)({ nullable: true }),
+        __metadata("design:type", Boolean)
+    ], UserEntity.prototype, "isActive", void 0);
     UserEntity = __decorate([
         (0, typeorm_1.Entity)('users')
     ], UserEntity);

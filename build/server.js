@@ -70,7 +70,7 @@ var Server = /** @class */ (function () {
                             port: 5433,
                             username: "alex",
                             password: "cubes",
-                            database: "postgres",
+                            database: "projetCUBES",
                             entities: ["build/database/entities/**/*.js"],
                             synchronize: true,
                             name: "projetCUBES"

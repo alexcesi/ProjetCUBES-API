@@ -43,8 +43,45 @@ var UserController = /** @class */ (function () {
     function UserController() {
         var _this = this;
         this.index = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var users;
             return __generator(this, function (_a) {
-                res.send(this.userService.index()); // Execute the method of service
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.userService.index()];
+                    case 1:
+                        users = _a.sent();
+                        res.send(users).json(); // Execute the method of service
+                        return [2 /*return*/];
+                }
+            });
+        }); };
+        this.create = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var user, newUser;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        user = req['body'];
+                        return [4 /*yield*/, this.userService.create(user)];
+                    case 1:
+                        newUser = _a.sent();
+                        res.send(newUser); // Execute the method of service
+                        return [2 /*return*/];
+                }
+            });
+        }); };
+        this.update = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var user, id;
+            return __generator(this, function (_a) {
+                user = req['body'];
+                id = req['params']['id'];
+                res.send(this.userService.update(user, Number(id))); // Execute the method of service
+                return [2 /*return*/];
+            });
+        }); };
+        this.delete = function (req, res) { return __awaiter(_this, void 0, void 0, function () {
+            var id;
+            return __generator(this, function (_a) {
+                id = req['params']['id'];
+                res.send(this.userService.delete(Number(id))); // Execute the method of service
                 return [2 /*return*/];
             });
         }); };
@@ -52,15 +89,6 @@ var UserController = /** @class */ (function () {
         this.userService = new user_service_1.UserService(); //Create a new instance of UserController
         this.routes();
     }
-    UserController.prototype.create = function (req, res) {
-        res.send(this.userService.create()); // Execute the method of service
-    };
-    UserController.prototype.update = function (req, res) {
-        res.send(this.userService.update()); // Execute the method of Service
-    };
-    UserController.prototype.delete = function (req, res) {
-        res.send(this.userService.delete()); // Execute the method of Service
-    };
     /**
      * Configure the routes of controller
      */

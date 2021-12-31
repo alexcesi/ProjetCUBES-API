@@ -49,19 +49,44 @@ var UserService = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.userRepository.find()];
                     case 1:
                         users = _a.sent();
+                        console.log(users);
                         return [2 /*return*/, users];
                 }
             });
         }); };
-        this.create = function () {
-            return "Create from Service";
-        };
-        this.update = function () {
-            return "Update from Service";
-        };
-        this.delete = function () {
-            return "Delete from Service";
-        };
+        this.create = function (user) { return __awaiter(_this, void 0, void 0, function () {
+            var newUser;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.userRepository.save(user)];
+                    case 1:
+                        newUser = _a.sent();
+                        return [2 /*return*/, newUser];
+                }
+            });
+        }); };
+        this.update = function (user, id) { return __awaiter(_this, void 0, void 0, function () {
+            var updatedUser;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.userRepository.update(id, user)];
+                    case 1:
+                        updatedUser = _a.sent();
+                        return [2 /*return*/, updatedUser];
+                }
+            });
+        }); };
+        this.delete = function (id) { return __awaiter(_this, void 0, void 0, function () {
+            var deletedUser;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.userRepository.delete(id)];
+                    case 1:
+                        deletedUser = _a.sent();
+                        return [2 /*return*/, deletedUser];
+                }
+            });
+        }); };
         this.userRepository = (0, typeorm_1.getConnection)('projetCUBES').getCustomRepository(user_repository_1.UserRepository);
     }
     return UserService;

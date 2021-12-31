@@ -1,4 +1,5 @@
 import { Router, Response, Request } from "express";
+import { UserEntity } from "../database/entities/UserEntity";
 import { UserService } from "../services/user.service";
 
 
@@ -13,19 +14,29 @@ export class UserController {
     }
 
     public index = async (req: Request, res: Response) => {
-        res.send(this.userService.index()); // Execute the method of service
+        const users = await this.userService.index();
+        res.send(users).json(); // Execute the method of service
     }
 
-    public create(req: Request, res: Response){
-        res.send(this.userService.create()); // Execute the method of service
+    public create = async (req: Request, res: Response) => {
+       const user = req['body'] as UserEntity;
+       const newUser = await this.userService.create(user);
+       res.send(newUser); // Execute the method of service
     }
 
-    public update(req: Request, res: Response) {
-        res.send(this.userService.update()); // Execute the method of Service
+    public update = async (req: Request, res: Response) => {
+        const user = req['body'] as UserEntity;
+        const id = req['params']['id'];
+
+        res.send(this.userService.update(user, Number(id)));  // Execute the method of service
+
+       
     }
-    
-    public delete(req: Request, res: Response) {
-        res.send(this.userService.delete()); // Execute the method of Service
+
+    public delete = async (req: Request, res: Response) => {
+        const id = req['params']['id'];
+        res.send(this.userService.delete(Number(id)));  // Execute the method of service
+
     }
  
     /**
